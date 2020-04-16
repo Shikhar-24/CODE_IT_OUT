@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll unsigned long long int
+
+ int main()
+ {
+     int t,m,n,i,j;
+     scanf("%d",&t);
+     ll a[201][201];
+     
+     for(i=0;i<=200;i++)
+     {
+       a[0][i]=1;
+       a[1][i]= i;
+       a[i][i]=1;
+     }
+     
+    for(i=1;i<=200;i++)
+     {
+         for(j=i+1;j<=200;j++)
+         {
+             a[i][j]=a[i][j-1]+a[i-1][j-1];
+             a[i][j]=(a[i][j])%(1000000007);
+         }
+     } 
+    
+     while(t--)
+     {
+         ll x;
+         scanf("%d %d",&n,&m);
+         x=max(m,n);
+         
+         cout<<a[x][m+n]<<endl;
+     }
+     return 0;
+ }
