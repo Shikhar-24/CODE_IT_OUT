@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int 
+#define ff for(i=0;i<len;i++)
+ 
+int main()
+{
+    string str;
+    cin>>str;
+    int len,i,j,s=0,x,c=1;
+    len=str.length();
+    if(len==1)
+    {
+        cout<<"0";
+        return 0;
+    }
+    ff
+    {
+        s+=str[i]-48;
+    }
+    //cout<<s<<" ";
+    vector<int> v;
+    while(1)
+    {
+          if(s/10 == 0)
+        {
+            cout<<c;
+            break;
+        }
+        else
+        c++;
+        v.clear();
+        while(s!=0)
+        {
+            x=s%10;
+            s=s/10;
+            v.push_back(x);
+        }
+        for(i=0;i<v.size();i++)
+        {
+            s+=v[i];
+        }
+        //cout<<s<<" ";
+    }
+    return 0;
+}
