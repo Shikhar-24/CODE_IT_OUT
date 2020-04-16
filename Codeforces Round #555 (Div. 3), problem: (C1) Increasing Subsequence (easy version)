@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+ #define ll long long int
+ #define ff for(i=0;i<n;i++)
+int main() {
+	ll n,i=0,j,l,r,prev,count=1,m=0;
+	vector<char> v;
+	cin>>n;
+	j=n-1;
+	int a[n];
+	ff
+	cin>>a[i];
+	
+	if(n==0)
+	{
+	    cout<<"1\nL\n";
+	    return 0;
+	}
+	
+	l=0;
+	r=n-1;
+	if(a[0]<a[n-1])
+	{ 
+	    v.push_back('L');
+	    prev=a[0];
+	    l++;
+	    
+	}
+	else
+	{
+	    v.push_back('R'); 
+	    prev=a[n-1];
+	    r--;
+	}
+	
+	while(l<n && r>=0)
+	{ 
+	  if(a[l]>prev && a[r]>prev)
+	  {
+	  	if(a[l]<a[r])
+	  	{
+	  	v.push_back('L'); 
+	  	prev=a[l]; 
+	  	l++; 
+	  	count++;
+	  	}
+	  	else
+	  	{ 
+	  	    v.push_back('R');
+	  	    prev=a[r];
+	  	    r--;
+	  	    count++;
+	  	}
+	  }
+	  else if(a[l]>prev)
+	  { 
+	      v.push_back('L');
+	      prev=a[l];
+	      l++;
+	      count++;
+	  }
+	  else if(a[r]>prev)
+	  { 
+	      v.push_back('R');
+	      prev=a[r]; 
+	      r--;
+	      count++;
+	  }
+	  else 
+	  break;
+	  m++;
+	}
+	cout<<count<<endl;
+	for(i=0;i<v.size();i++)
+	cout<<v[i];
+	return 0;
+}
