@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int
+#define ff for(i=0;i<n;i++)
+ 
+int main()
+{
+    ll t,n,i;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n;
+        ll a[n];
+        ff
+        cin>>a[i];
+        sort(a,a+n);
+        ll x=a[0]*a[n-1];
+        //cout<<x<<endl;
+        vector<ll> b;
+        for(i=2;i<=sqrt(x);i++)
+        {
+            if(x%i==0)
+            {
+                b.push_back(i);
+                if((x/i)!=i)
+                b.push_back(x/i);
+            }
+        }
+        sort(b.begin(),b.end());
+        if(n!=b.size())
+        {
+            cout<<"-1\n";continue;
+        }
+        else{
+        for(i=0;i<n;i++)
+        {
+           // cout<<b[i]<<" ";
+          if(a[i]!=b[i])
+            {
+                cout<<"-1\n";
+                break;
+            } 
+        }
+        if(i==n)
+        cout<<x<<endl;
+        }
+    }//t
+	
+	return 0;
+}
