@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std ;
+
+int main()
+{
+   
+    vector<int> largest;
+    int m,s,i;
+    scanf("%d %d",&m,&s);
+    int x=s;
+     int smallest[m];
+     if(s==0 && m==1)
+     {
+         cout<<"0 0";
+         return 0;
+     }
+    if(s==0 || m*9<s)
+    {
+        cout<<"-1 -1\n";
+        return 0;
+    }
+    smallest[0]=1;
+    s--;
+    for(i=m-1;i>0;i--)
+    {
+        if(s>9)
+        {
+            smallest[i]=9;
+            s-=9;
+        }
+        else if(s>0 && s<=9)
+        {
+            smallest[i]=s;
+            s=0;
+        }
+        else if(s==0)
+        smallest[i]=0;
+    }
+    if(s>0 && s<9)
+    smallest[0]+=s;
+    for(i=0;i<m;i++)
+    cout<<smallest[i];
+      cout<<" ";
+      s=x;
+    for(i=0;i<m;i++)
+    {
+        if(s>9)
+        {
+            largest.push_back(9);
+            s=s-9;
+        }
+        else if(s>0 && s<=9)
+        {
+            largest.push_back(s);
+            s=0;
+        }
+        else if(s==0)
+        largest.push_back(0);
+        cout<<largest[i];
+    }
+  
+    return 0;
+}
