@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int
+#define ff for(i=0;i<n;i++)
+#define fio() ios_base::sync_with_stdio(false); cin.tie(NULL);
+
+struct str
+{
+    string input;
+    ll pos;
+    ll j=0;
+};
+
+int comp_1(str x,str y)
+{
+    if(x.input==y.input)
+	return (x.pos<y.pos);
+	else
+    return (x.input<y.input);
+}
+
+int comp_2(str x, str y)
+{
+    return (x.pos < y.pos);
+}
+int main()
+{
+    fio();
+    ll n,i;
+    cin>>n;
+    str s[n];
+    ff
+    {
+        cin>>s[i].input;
+        s[i].pos=i;
+    }
+    sort(s,s+n,comp_1);
+    for(i=0;i<n-1;i++)
+    {
+        if(s[i].input == s[i+1].input)
+        s[i+1].j = (s[i].j) + 1;
+    }
+    sort(s,s+n,comp_2);
+    ff
+    {
+    if(s[i].j == 0)
+    cout<<"OK\n";
+    else
+    cout<<s[i].input<<s[i].j<<endl;
+    }
+    return 0;
+}
