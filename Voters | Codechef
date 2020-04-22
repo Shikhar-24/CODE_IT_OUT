@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+int main() 
+{
+	ll n1,n2,n3,i,c[1000001]={0};
+	scanf("%lld %lld %lld",&n1,&n2,&n3);
+	int x[n1],y[n2],z[n3];
+	for(i=0;i<n1;i++)
+	{
+	    cin>>x[i];
+	    c[x[i]]++;
+	}
+	for(i=0;i<n2;i++)
+	{
+	cin>>y[i];
+	c[y[i]]++;
+	}
+	for(i=0;i<n3;i++)
+	{
+	    cin>>z[i];
+	    c[z[i]]++;
+	}
+	vector<ll> v;
+	for(i=0;i<1000001;i++)
+	{
+	    if(c[i]>=2)
+	    {
+	        v.push_back(i);
+	    }
+	}
+	cout<<v.size()<<endl;
+	for(i=0;i<v.size();i++)
+	cout<<v[i]<<endl;
+	return 0;
+}
