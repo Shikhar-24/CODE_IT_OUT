@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fio() ios_base::sync_with_stdio(); cin.tie(NULL); cout.tie(NULL);
+#define fl float
+#define ll long long int
+#define f1(i,n) for(i=0;i<n;i++)
+#define f2(i,a,b) for(i=a;i<b;i++)
+
+int main()
+{
+    ll b,a,i,n,a_max;
+    cin>>n>>b>>a;
+    a_max=a;
+    ll x[n],c=0;
+    f1(i,n) cin>>x[i];
+    f1(i,n)
+    {
+        if(a==0 && b==0)
+        break;
+        if(a==0)
+        {
+            b--;
+            if(x[i]==1)
+            a=min(a+1,a_max);
+        }
+        else if(b==0)
+            a--;
+        else if(x[i]==1 && a<a_max)
+        {
+            b--;
+            a=min(a+1,a_max);
+        }
+        else a--;
+        c++;
+    }
+    cout<<c<<endl;
+    return 0;
+}
